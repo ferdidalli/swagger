@@ -574,14 +574,14 @@
         }
       }
     },
-    "/api/User/id": {
+    "/api/User/userName": {
       "get": {
         "tags": [
           "User"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "userName",
             "in": "query",
             "schema": {
               "type": "string"
@@ -594,17 +594,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserRolesResponseDtoIResponse"
+                  "$ref": "#/components/schemas/AppUserIResponse"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserRolesResponseDtoIResponse"
+                  "$ref": "#/components/schemas/AppUserIResponse"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UserRolesResponseDtoIResponse"
+                  "$ref": "#/components/schemas/AppUserIResponse"
                 }
               }
             }
@@ -800,6 +800,56 @@
   },
   "components": {
     "schemas": {
+      "AppUser": {
+        "type": "object",
+        "properties": {
+          "PersonalCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "SurName": {
+            "type": "string",
+            "nullable": true
+          },
+          "EMailAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "Title": {
+            "type": "string",
+            "nullable": true
+          },
+          "Manager": {
+            "type": "string",
+            "nullable": true
+          },
+          "IpPhone": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AppUserIResponse": {
+        "type": "object",
+        "properties": {
+          "StatusCode": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Data": {
+            "$ref": "#/components/schemas/AppUser"
+          },
+          "Error": {
+            "$ref": "#/components/schemas/Error"
+          }
+        },
+        "additionalProperties": false
+      },
       "BooleanIResponse": {
         "type": "object",
         "properties": {
